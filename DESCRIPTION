@@ -24,7 +24,8 @@ Suggests:
     BiocStyle, 
     glue,
     sessioninfo,
-    knitr 
+    knitr,
+    ontoProc2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 BiocType: Book
