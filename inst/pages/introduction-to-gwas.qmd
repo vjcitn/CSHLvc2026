@@ -1,0 +1,64 @@
+# Introduction to GWAS
+
+This chapter introduces genome-wide association studies (GWAS), covering the
+conceptual foundations and practical tools needed to design, execute, and
+interpret large-scale genetic association analyses.
+
+## Phenotype Vocabulary
+
+At the boundaries of knowledge, it is important to establish conventions
+to support clear communication.  "Ontology" is a field of information
+science devoted to formal specification of vocabularies and associated
+conceptual hierarchies.  Practical use of ontologies in genomic data
+science started with Gene Ontology but has grown to involve frequent use of
+ontologies for
+
+- cell types
+- diseases
+- experimental factors and designs
+
+Here is an "ontological report" on "exocrine pancreatic carcinoma", provided
+by the European Bioinformatics Institute Ontology Lookup Service:
+
+![mondo snapshot](images/mondoExocPanc.jpg)
+
+Key elements:
+
+- definition of the short phrase or "term"
+- "IRI": a URL-like entity that can be used for web access
+- "CURIE": compact universal resource identifier of fixed length (MONDO:0005192)
+- snapshot of conceptual hierarchy "tree"
+
+Let's program with the MONDO ontology.  We need to have the devtools and
+remotes packages installed, and then we can install the ontoProc2
+package with `BiocManager::install("vjcitn/ontoProc2")`.  Once this is
+done, the following will succeed.
+
+```{r lkmon1}
+library(ontoProc2)
+mondo = semsql_connect(ontology="mondo") # download on first attempt
+report(mondo)
+```
+
+
+## Study Designs
+
+GWAS can be conducted under several study designs, each with distinct strengths
+and confounders. This section compares case-control studies, cohort studies,
+family-based designs, and biobank-scale analyses, with attention to population
+stratification and the importance of ancestry-matched controls.
+
+## Manhattan Plots
+
+The Manhattan plot is the canonical visualization for GWAS results, displaying
+$-\log_{10}(p)$ values across the genome. This section explains how to interpret
+Manhattan plots, choose significance thresholds (genome-wide significance at
+$p < 5 \times 10^{-8}$), and identify credible association signals amid
+linkage disequilibrium patterns.
+
+## Functional Interpretation
+
+Identifying a significant SNP is only the beginning. This section covers
+post-GWAS functional annotation — including regulatory element overlap, eQTL
+colocalization, gene prioritization strategies, and pathway enrichment — to
+move from statistical association to biological insight.

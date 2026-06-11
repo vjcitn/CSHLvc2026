@@ -1,0 +1,5 @@
+# Spatial Transcriptomics
+
+This chapter introduces spatial transcriptomics technologies and analytical
+frameworks, exploring how the spatial context of gene expression enriches our
+understanding of tissue architecture and disease.

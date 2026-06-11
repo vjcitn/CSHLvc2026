@@ -1,0 +1,21 @@
+book:
+  title: "CSHLvc2026"
+  chapters:
+    - index.qmd
+    - pages/introduction-to-gwas.qmd
+    - pages/xqtl.qmd
+    - pages/spatial-transcriptomics.qmd
+    - pages/future-computing.qmd
+  cover-image: assets/cover.png
+  favicon: assets/favicon.png
+  sidebar: 
+    tools:
+      - icon: git
+        menu:
+          - text: Source Code
+            url:  https://github.com/vjcitn/CSHLvc2026/
+          - text: Browse version `devel`
+            url:  https://vjcitn.github.io/CSHLvc2026/devel/
+    style: "docked"
+    background: "light"
+    collapse-level: 5

@@ -1,0 +1,5 @@
+# xQTL
+
+This chapter covers expression and molecular quantitative trait loci (xQTL),
+connecting genetic variation to intermediate molecular phenotypes as a bridge
+between GWAS signals and biological mechanisms.

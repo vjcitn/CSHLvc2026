@@ -1,0 +1,5 @@
+# Future Computing
+
+This chapter looks ahead at emerging computational paradigms relevant to
+genomics and biomedical research, including cloud-native workflows, federated
+analysis, and the role of AI/ML in large-scale data integration.
