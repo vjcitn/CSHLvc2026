@@ -101,10 +101,14 @@ library(gwascat)
 library(DT)
 library(S4Vectors)
 data("gwc_110626", package="CSHLvc2026")
+wrap_pmid = function(x)
+  sprintf("<a href='https://pubmed.ncbi.nlm.nih.gov/%s' target='_blank'>%s</a>", x, x)
 dids = (1:800)[-which(duplicated(gwc_110626$STUDY[1:800]))]
-sel = as.data.frame(mcols(gwc_110626[dids])[,c("STUDY", 
+mc = mcols(gwc_110626[dids])
+sel = as.data.frame(mc[, c("STUDY", "PUBMEDID",
   "INITIAL SAMPLE SIZE", "REPLICATION SAMPLE SIZE")])
-datatable(sel)
+sel$PUBMEDID = sapply(sel$PUBMEDID, wrap_pmid)
+datatable(sel, escape = FALSE)
 ```
 
 GWAS can be conducted under several study designs, each with distinct strengths
