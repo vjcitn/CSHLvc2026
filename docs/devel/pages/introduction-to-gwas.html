@@ -263,7 +263,7 @@ window.Quarto = {
 <span><span class="co">##  OpenTelemetry error: there is no package called 'otelsdk'</span></span>
 <span><span class="co">##  OpenTelemetry error: there is no package called 'otelsdk'</span></span>
 <span><span class="va">mondo</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ontoProc2/man/semsql_connect.html">semsql_connect</a></span><span class="op">(</span>ontology<span class="op">=</span><span class="st">"mondo"</span><span class="op">)</span> <span class="co"># download on first attempt</span></span>
-<span><span class="co">##  Connected to SemanticSQL database: /root/.cache/R/BiocFileCache/18f6ecabb0a_mondo.db</span></span>
+<span><span class="co">##  Connected to SemanticSQL database: /root/.cache/R/BiocFileCache/1997777ad18_mondo.db</span></span>
 <span><span class="co">##  Primary ontology prefix: MONDO</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/ontoProc2/man/report.html">report</a></span><span class="op">(</span><span class="va">mondo</span><span class="op">)</span></span>
 <span><span class="co">##  </span></span>
@@ -273,7 +273,7 @@ window.Quarto = {
 <span><span class="co">##  </span></span>
 <span><span class="co">##  Connection Details:</span></span>
 <span><span class="co">##  ---------------------------------------- </span></span>
-<span><span class="co">##    Database path:    /root/.cache/R/BiocFileCache/18f6ecabb0a_mondo.db </span></span>
+<span><span class="co">##    Database path:    /root/.cache/R/BiocFileCache/1997777ad18_mondo.db </span></span>
 <span><span class="co">##    Ontology prefix:  MONDO </span></span>
 <span><span class="co">##    Status:           ✓   Connected </span></span>
 <span><span class="co">##  </span></span>
@@ -306,6 +306,70 @@ window.Quarto = {
 <span><span class="co">##  Use methods like search_labels(), get_ancestors(), etc.</span></span>
 <span><span class="co">##  Run ?SemsqlConn for documentation.</span></span>
 <span><span class="co">##  ============================================================</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To get precise about phenotypes of interest, we generally want to be able to manipulate the associated CURIEs. To learn them for a word or phrase of interest, <code>search_labels</code> can be used. We’ll focus on “asthma” for now.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">al</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ontoProc2/man/search_labels.html">search_labels</a></span><span class="op">(</span><span class="va">mondo</span>, <span class="st">"asthma"</span><span class="op">)</span></span>
+<span><span class="va">al</span></span>
+<span><span class="co">##           subject                                         label</span></span>
+<span><span class="co">##  1    CHEBI:49167                           anti-asthmatic drug</span></span>
+<span><span class="co">##  2    CHEBI:65023                          anti-asthmatic agent</span></span>
+<span><span class="co">##  3   ECTO:9001829               exposure to anti-asthmatic drug</span></span>
+<span><span class="co">##  4     HP:0002099                                        Asthma</span></span>
+<span><span class="co">##  5   MAXO:0000634                  anti-asthmatic agent therapy</span></span>
+<span><span class="co">##  6  MONDO:0001491                          cough variant asthma</span></span>
+<span><span class="co">##  7  MONDO:0004765                              intrinsic asthma</span></span>
+<span><span class="co">##  8  MONDO:0004766                            status asthmaticus</span></span>
+<span><span class="co">##  9  MONDO:0004784                               allergic asthma</span></span>
+<span><span class="co">##  10 MONDO:0004979                                        asthma</span></span>
+<span><span class="co">##  11 MONDO:0005405                        childhood onset asthma</span></span>
+<span><span class="co">##  12 MONDO:0008834 asthma, nasal polyps, and aspirin intolerance</span></span>
+<span><span class="co">##  13 MONDO:0008835       asthma, short stature, and elevated IgA</span></span>
+<span><span class="co">##  14 MONDO:0010940            inherited susceptibility to asthma</span></span>
+<span><span class="co">##  15 MONDO:0011805   asthma-related traits, susceptibility to, 1</span></span>
+<span><span class="co">##  16 MONDO:0012067   asthma-related traits, susceptibility to, 2</span></span>
+<span><span class="co">##  17 MONDO:0012379   asthma-related traits, susceptibility to, 3</span></span>
+<span><span class="co">##  18 MONDO:0012577   asthma-related traits, susceptibility to, 4</span></span>
+<span><span class="co">##  19 MONDO:0012607   asthma-related traits, susceptibility to, 5</span></span>
+<span><span class="co">##  20 MONDO:0012666   asthma-related traits, susceptibility to, 6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now that we know an associated CURIE, we can get additional information about its position in the conceptual hierarchy of diseases defined in MONDO.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ainf</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ontoProc2/man/get_term_info.html">get_term_info</a></span><span class="op">(</span><span class="va">mondo</span>, <span class="st">"MONDO:0004979"</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ainf</span><span class="op">)</span></span>
+<span><span class="co">##  List of 6</span></span>
+<span><span class="co">##   $ id          : chr "MONDO:0004979"</span></span>
+<span><span class="co">##   $ label       :'data.frame':   1 obs. of  2 variables:</span></span>
+<span><span class="co">##    ..$ subject: chr "MONDO:0004979"</span></span>
+<span><span class="co">##    ..$ label  : chr "asthma"</span></span>
+<span><span class="co">##   $ definition  : chr "A bronchial disease that is characterized by chronic inflammation and narrowing of the airways, which is caused"| __truncated__</span></span>
+<span><span class="co">##   $ synonyms    :'data.frame':   0 obs. of  3 variables:</span></span>
+<span><span class="co">##    ..$ subject  : chr(0) </span></span>
+<span><span class="co">##    ..$ predicate: chr(0) </span></span>
+<span><span class="co">##    ..$ synonym  : chr(0) </span></span>
+<span><span class="co">##   $ superclasses:'data.frame':   1 obs. of  2 variables:</span></span>
+<span><span class="co">##    ..$ id   : chr "MONDO:0001358"</span></span>
+<span><span class="co">##    ..$ label: chr "bronchial disorder"</span></span>
+<span><span class="co">##   $ subclasses  :'data.frame':   8 obs. of  2 variables:</span></span>
+<span><span class="co">##    ..$ id   : chr [1:8] "MONDO:0850283" "MONDO:0004784" "MONDO:0005405" "MONDO:0850282" ...</span></span>
+<span><span class="co">##    ..$ label: chr [1:8] "acute asthma" "allergic asthma" "childhood onset asthma" "chronic asthma" ...</span></span>
+<span><span class="va">tta</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ontoProc2/man/get_descendants.html">get_descendants</a></span><span class="op">(</span><span class="va">mondo</span>, <span class="st">"MONDO:0004979"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">tta</span><span class="op">)</span></span>
+<span><span class="co">##  'data.frame':   18 obs. of  3 variables:</span></span>
+<span><span class="co">##   $ id       : chr  "MONDO:0956975" "MONDO:0956976" "MONDO:0850283" "MONDO:0004784" ...</span></span>
+<span><span class="co">##   $ label    : chr  "T2-high asthma" "T2-low asthma" "acute asthma" "allergic asthma" ...</span></span>
+<span><span class="co">##   $ predicate: chr  "rdfs:subClassOf" "rdfs:subClassOf" "rdfs:subClassOf" "rdfs:subClassOf" ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We will use an alternate representation of the MONDO ontology that is useful for visualizing relationships.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"monoi"</span>, package<span class="op">=</span><span class="st">"CSHLvc2026"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ontoProc2/man/onto_plot2.html">onto_plot2</a></span><span class="op">(</span><span class="va">monoi</span>, <span class="va">tta</span><span class="op">$</span><span class="va">id</span>, cex<span class="op">=</span><span class="fl">.55</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="introduction-to-gwas_files/figure-html/lkoi-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section><section id="study-designs" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="study-designs">
 <span class="header-section-number">1.2</span> Study Designs</h2>
