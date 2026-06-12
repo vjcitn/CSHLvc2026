@@ -5,7 +5,7 @@ Description:
     It covers genome-wide association studies, molecular quantitative trait
     loci, spatial transcriptomics, and emerging computational paradigms for
     biomedical research.
-Version: 0.98.0
+Version: 0.98.1
 Date: `r date()`
 Authors@R:
     person(
@@ -25,7 +25,8 @@ Suggests:
     glue,
     sessioninfo,
     knitr,
-    ontoProc2
+    ontoProc2,
+    remotes
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 BiocType: Book
