@@ -5,6 +5,12 @@ on:
     branches:
       - devel
       - RELEASE_**
+  workflow_dispatch:
+    inputs:
+      build_arm64:
+        description: 'Build linux/arm64 image (slow)'
+        type: boolean
+        default: false
 
 jobs:
   build-push:
@@ -66,16 +72,22 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           build-args: |
             BIOC_VERSION=${{ github.ref_name }}
+          cache-from: type=gha,scope=amd64
+          cache-to: type=gha,mode=max,scope=amd64
 
       - name: 🚀 Push local Docker image to ghcr.io
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ (github.event_name == 'workflow_dispatch' && inputs.build_arm64) && 'linux/amd64,linux/arm64' || 'linux/amd64' }}
           tags: ${{ steps.meta.outputs.tags }}
           build-args: |
             BIOC_VERSION=${{ github.ref_name }}
+          cache-from: |
+            type=gha,scope=amd64
+            type=gha,scope=arm64
+          cache-to: type=gha,mode=max,scope=arm64
 
       - name: 📚 Recover pkg artifacts generated during build in local Docker container (pkg bundle and book) 
         env:
