@@ -40,6 +40,37 @@ mondo = semsql_connect(ontology="mondo") # download on first attempt
 report(mondo)
 ```
 
+To get precise about phenotypes of interest, we generally want to
+be able to manipulate the associated CURIEs.  To learn them for a
+word or phrase of interest, `search_labels` can be used.
+We'll focus on "asthma" for now.
+
+```{r lkas1}
+al = search_labels(mondo, "asthma")
+al
+```
+
+Now that we know an associated CURIE, we can get additional information
+about its position in the conceptual hierarchy of diseases defined in MONDO.
+
+```{r lkas2}
+ainf = get_term_info(mondo, "MONDO:0004979") 
+str(ainf)
+tta = get_descendants(mondo, "MONDO:0004979")
+str(tta)
+```
+
+We will use an alternate representation of the MONDO ontology
+that is useful for visualizing relationships.
+
+```{r lkoi}
+data("monoi", package="CSHLvc2026")
+onto_plot2(monoi, tta$id, cex=.55)
+```
+
+
+
+
 
 ## Study Designs
 

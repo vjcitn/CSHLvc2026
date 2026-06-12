@@ -5,7 +5,7 @@ Description:
     It covers genome-wide association studies, molecular quantitative trait
     loci, spatial transcriptomics, and emerging computational paradigms for
     biomedical research.
-Version: 0.98.1
+Version: 0.98.2
 Date: `r date()`
 Authors@R:
     person(
@@ -36,3 +36,4 @@ BiocBookTemplate: 1.0.6
 SystemRequirements: quarto
 Remotes:
 	vjcitn/ontoProc2
+Config/roxygen2/version: 8.0.0
