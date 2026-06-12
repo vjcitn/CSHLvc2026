@@ -15,9 +15,12 @@ ontologies for
 
 - cell types
 - diseases
-- experimental factors and designs
+- experimental factors and designs.
 
-Here is an "ontological report" on "exocrine pancreatic carcinoma", provided
+### The MONDO disease ontology
+
+Here is an "ontological report" on the [MONDO](https://mondo.monarchinitiative.org/)
+term "exocrine pancreatic carcinoma", provided
 by the European Bioinformatics Institute Ontology Lookup Service:
 
 ![mondo snapshot](images/mondoExocPanc.jpg)
@@ -68,16 +71,50 @@ data("monoi", package="CSHLvc2026")
 onto_plot2(monoi, tta$id, cex=.55)
 ```
 
+### Review
+
+- Ontologies are structured vocabularies characterizing a conceptual domain
+- A given term maps to a fixed-length CURIE
+- Web pages about ontological terms are addressed with IRIs
+- The ontoProc2 package supports interactive work with ontologies
+
+### Exercises
+
+1. Use `search_labels` to acquire information and CURIEs related to
+a disease of interest, such as hypertension, obesity.
+
+2. Produce a plot of the "conceptual neighborhood" of the disease
+you chose.
 
 
 
 
-## Study Designs
+
+## GWAS "Outcomes"
+
+We take for granted the existence of a catalog of genome wide association
+studies (GWAS). We will start to unpack this research concept.
+This table gives a flavor of topics that have been studied in this way.
+
+```{r lkcat}
+library(gwascat)
+library(DT)
+library(S4Vectors)
+data("gwc_110626", package="CSHLvc2026")
+dids = (1:800)[-which(duplicated(gwc_110626$STUDY[1:800]))]
+sel = as.data.frame(mcols(gwc_110626[dids])[,c("STUDY", 
+  "INITIAL SAMPLE SIZE", "REPLICATION SAMPLE SIZE")])
+datatable(sel)
+```
 
 GWAS can be conducted under several study designs, each with distinct strengths
 and confounders. This section compares case-control studies, cohort studies,
 family-based designs, and biobank-scale analyses, with attention to population
 stratification and the importance of ancestry-matched controls.
+
+```{r lktrait}
+unique(grep("[Aa]sthma", gwc_110626$`DISEASE/TRAIT`,value=TRUE)) |> head(10)
+```
 
 ## Manhattan Plots
 

@@ -19,6 +19,8 @@ Depends:
     R (>= 4.3)
 Imports:
 Suggests:
+    DT,
+    gwascat,
     BiocManager, 
     BiocVersion, 
     BiocStyle, 
