@@ -84,13 +84,31 @@ onto_plot2(monoi, tta$id, cex=.55)
 a disease of interest, such as hypertension, obesity.
 
 2. Produce a plot of the "conceptual neighborhood" of the disease
-you chose.
+you chose.  You will need a vector of MONDO CURIEs to pass
+to the `onto_plot2` function.
 
 
+## GWAS basics
 
+Here's an example paper for a genome-wide association study.
 
+![Johnson title](images/plateAggTitle.jpg)
 
-## GWAS "Outcomes"
+This paper provides an unusually explicit presentation of the basic result: the distribution
+of a continuous outcome is shown to vary systematically by SNP genotype.
+
+![Johnson boxplots](images/plateletAgg.jpg)
+
+To help unearth the mechanisms underlying the observed relationship,
+reference information on chromatin accessibility and transcription factor binding experiments is
+provided.
+
+![Johnson binding](images/plateAggTFs.jpg)
+
+A basic aim of this section is to mobilize Bioconductor and other
+genomics data science resources to improve interpretability of GWAS results.
+
+## GWAS "Catalog"
 
 We take for granted the existence of a catalog of genome wide association
 studies (GWAS). We will start to unpack this research concept.
@@ -101,9 +119,13 @@ library(gwascat)
 library(DT)
 library(S4Vectors)
 data("gwc_110626", package="CSHLvc2026")
+#
+# the following code produces an arbitrary collection of records
+# from the gwas catalog, one per study instead of one per SNP
+#
 wrap_pmid = function(x)
   sprintf("<a href='https://pubmed.ncbi.nlm.nih.gov/%s' target='_blank'>%s</a>", x, x)
-dids = (1:800)[-which(duplicated(gwc_110626$STUDY[1:800]))]
+dids = (1:1000)[-which(duplicated(gwc_110626$STUDY[1:1000]))]
 mc = mcols(gwc_110626[dids])
 sel = as.data.frame(mc[, c("STUDY", "PUBMEDID",
   "INITIAL SAMPLE SIZE", "REPLICATION SAMPLE SIZE")])
@@ -111,22 +133,32 @@ sel$PUBMEDID = sapply(sel$PUBMEDID, wrap_pmid)
 datatable(sel, escape = FALSE)
 ```
 
-GWAS can be conducted under several study designs, each with distinct strengths
-and confounders. This section compares case-control studies, cohort studies,
-family-based designs, and biobank-scale analyses, with attention to population
-stratification and the importance of ancestry-matched controls.
+We've organized the table by 'STUDY' and 'PUBMEDID'.  Any given
+study will produce a collection of "associations": typically
+these are single-nucleotide variants for which the allele counts
+are statistically associated with presence or magnitude of
+some outcome.  It is reasonable to organize the entire
+catalog as a "GRanges" object.
+
+```{r lkgr1}
+gwc_110626
+```
+
+Our use of ontology above does not fully prepare us for the
+values found in "DISEASE/TRAIT" field of the catalog.
 
 ```{r lktrait}
 unique(grep("[Aa]sthma", gwc_110626$`DISEASE/TRAIT`,value=TRUE)) |> head(10)
 ```
 
-## Manhattan Plots
+### Exercises
 
-The Manhattan plot is the canonical visualization for GWAS results, displaying
-$-\log_{10}(p)$ values across the genome. This section explains how to interpret
-Manhattan plots, choose significance thresholds (genome-wide significance at
-$p < 5 \times 10^{-8}$), and identify credible association signals amid
-linkage disequilibrium patterns.
+1. For the records identified above, in which the disease phrase includes 'asthma',
+what CURIEs are employed in the catalog?  Do they make sense?
+
+2. Pick a phenotype of epidemiological interest, determine a relevant CURIE, and
+find it in the catalog.  How many SNPs are associated with variation in the selected phenotype?
+
 
 ## Functional Interpretation
 
