@@ -9,3 +9,7 @@
 #' class definition is present
 #' @docType data
 "gwc_110626"
+
+#' a liftOver chain as defined by rtracklayer, for hg19 to hg38
+#' @docType data
+"ch_19to38"

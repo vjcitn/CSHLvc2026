@@ -100,7 +100,8 @@ of a continuous outcome is shown to vary systematically by SNP genotype.
 ![Johnson boxplots](images/plateletAgg.jpg)
 
 To help unearth the mechanisms underlying the observed relationship,
-reference information on chromatin accessibility and transcription factor binding experiments is
+reference information on chromatin accessibility and transcription factor binding 
+in the vicinity of the main "hit" on chromosome 10 is
 provided.
 
 ![Johnson binding](images/plateAggTFs.jpg)
@@ -158,6 +159,32 @@ what CURIEs are employed in the catalog?  Do they make sense?
 
 2. Pick a phenotype of epidemiological interest, determine a relevant CURIE, and
 find it in the catalog.  How many SNPs are associated with variation in the selected phenotype?
+
+## Manhattan plots
+
+The summary of a genome-wide association study plots $-\log10 p$
+for the test of no association between SNP genotype and outcome,
+against the chromsome location of the SNP.
+
+We have a simple utility function for producing such plots for
+studies in the GWAS catalog.
+
+```{r lkman1}
+library(CSHLvc2026)
+data("gwc_110626", package="CSHLvc2026")
+make_manh("GCST90002322", gwc_110626)
+```
+
+### Exercises
+
+1. Produce the manhattan plot for a study of interest to you.
+Add the study title to your display.  Hint: apply `ggtitle`.
+
+2. Arrange for the gene symbols to be plotted on the manhattan
+plot for "hits" of interest to you.
+
+3. (Advanced) Modify `make_manh` to produce a plotly display in
+which text such as gene name and SNP position are shown on hover.
 
 
 ## Functional Interpretation
