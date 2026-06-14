@@ -189,7 +189,80 @@ which text such as gene name and SNP position are shown on hover.
 
 ## Functional Interpretation
 
-Identifying a significant SNP is only the beginning. This section covers
-post-GWAS functional annotation — including regulatory element overlap, eQTL
-colocalization, gene prioritization strategies, and pathway enrichment — to
-move from statistical association to biological insight.
+We return to the colocalization of GWAS hit and TF binding peaks
+from the Johnson paper.
+
+![Johnson binding](images/plateAggTFs.jpg)
+
+We will use the bedbaser package to interact with
+a large library of "BED" files -- genomic intervals with
+scores measuring experimental effects observed within these intervals.
+
+```{r lkbedbase}
+library(bedbaser)
+library(GenomicRanges)
+
+# Initialize the BEDbase API client
+bb <- BEDbase()
+```
+
+We search the library for bed files for ChIP-seq
+experiments involving EP300 in K562 cells.
+Note the limit parameter.  This is an arbitrary
+selection reflecting experiences with long delays
+with large values of this parameter.
+
+```{r lksh}
+ep300_search <- bb_bed_text_search(
+  bb,
+  query = "EP300 ChIP-seq K562 hg38",
+  limit = 20
+)
+```
+
+Review the results in an interactive table.  The search procedure 
+[is documented](https://docs.bedbase.org/bedbase/user/bedbase-search/).
+
+```{r lkeptab}
+DT::datatable(as.data.frame(ep300_search)[,-2])
+```
+
+Use the search/filter box at the top to confine attention to records
+involving EP300.
+We will retrieve the bed file with id "80179a031d3b0799669bd78fef60584e".
+
+```{r getgr}
+k562_ep300_peaks <- bb_to_granges(bb, bed_id = "80179a031d3b0799669bd78fef60584e")
+k562_ep300_peaks
+```
+
+The SNP identified in the plot is expressed as a GRanges, so that we can check
+for its relationship to an EP300 peak.
+```{r lkhit}
+target_variant <- GRanges(
+  seqnames = "chr10",
+  ranges = IRanges(start = 119250744, end = 119250744)
+)
+subsetByOverlaps(k562_ep300_peaks, target_variant)
+```
+
+This result is consistent with the finding in the figure above.
+
+### Exercises
+
+1.  The `ep300_search` table produced above has results for other cell lines.
+Are there other cell lines in which a similar finding arises?
+
+2.  Use similar methods to check binding patterns for other transcription factors 
+whose binding might be disrupted by the target variant.  You will need to
+modify the query for `bb_bed_text_search` and acquire peak sets.
+
+3.  "GWAS mini journal club".  Use the GWAS catalog to identify studies, genes, and SNPs
+of interest to you.  Prepare a short presentation on 
+
+- the phenotype or disease under study,
+- the population in which the study was conducted, and the study design,
+- the minor allele frequencies of identified "hits",
+- the scope of associations discovered,
+- prospects for functional interpretation of the associations using bedbase or other
+tools.
