@@ -1,3 +1,7 @@
+---
+prefer-html: true
+---
+
 # Spatial Transcriptomics
 
 This chapter introduces spatial transcriptomics technologies and analytical

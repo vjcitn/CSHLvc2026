@@ -1,3 +1,7 @@
+---
+prefer-html: true
+---
+
 # Future Computing
 
 This chapter looks ahead at emerging computational paradigms relevant to

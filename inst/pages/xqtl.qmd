@@ -1,3 +1,7 @@
+---
+prefer-html: true
+---
+
 # xQTL
 
 This chapter covers expression and molecular quantitative trait loci (xQTL),
