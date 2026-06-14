@@ -102,7 +102,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script><link href="../site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.34.0/datatables.js"></script><script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -212,10 +217,33 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#phenotype-vocabulary" id="toc-phenotype-vocabulary" class="nav-link active" data-scroll-target="#phenotype-vocabulary"><span class="header-section-number">1.1</span> Phenotype Vocabulary</a></li>
-  <li><a href="#study-designs" id="toc-study-designs" class="nav-link" data-scroll-target="#study-designs"><span class="header-section-number">1.2</span> Study Designs</a></li>
-  <li><a href="#manhattan-plots" id="toc-manhattan-plots" class="nav-link" data-scroll-target="#manhattan-plots"><span class="header-section-number">1.3</span> Manhattan Plots</a></li>
-  <li><a href="#functional-interpretation" id="toc-functional-interpretation" class="nav-link" data-scroll-target="#functional-interpretation"><span class="header-section-number">1.4</span> Functional Interpretation</a></li>
+<li>
+<a href="#phenotype-vocabulary" id="toc-phenotype-vocabulary" class="nav-link active" data-scroll-target="#phenotype-vocabulary"><span class="header-section-number">1.1</span> Phenotype Vocabulary</a>
+  <ul class="collapse">
+<li><a href="#the-mondo-disease-ontology" id="toc-the-mondo-disease-ontology" class="nav-link" data-scroll-target="#the-mondo-disease-ontology"><span class="header-section-number">1.1.1</span> The MONDO disease ontology</a></li>
+  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review"><span class="header-section-number">1.1.2</span> Review</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">1.1.3</span> Exercises</a></li>
+  </ul>
+</li>
+  <li><a href="#gwas-basics" id="toc-gwas-basics" class="nav-link" data-scroll-target="#gwas-basics"><span class="header-section-number">1.2</span> GWAS basics</a></li>
+  <li>
+<a href="#gwas-catalog" id="toc-gwas-catalog" class="nav-link" data-scroll-target="#gwas-catalog"><span class="header-section-number">1.3</span> GWAS “Catalog”</a>
+  <ul class="collapse">
+<li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">1.3.1</span> Exercises</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#manhattan-plots" id="toc-manhattan-plots" class="nav-link" data-scroll-target="#manhattan-plots"><span class="header-section-number">1.4</span> Manhattan plots</a>
+  <ul class="collapse">
+<li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="header-section-number">1.4.1</span> Exercises</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#functional-interpretation" id="toc-functional-interpretation" class="nav-link" data-scroll-target="#functional-interpretation"><span class="header-section-number">1.5</span> Functional Interpretation</a>
+  <ul class="collapse">
+<li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3"><span class="header-section-number">1.5.1</span> Exercises</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -243,9 +271,11 @@ window.Quarto = {
 <ul>
 <li>cell types</li>
 <li>diseases</li>
-<li>experimental factors and designs</li>
+<li>experimental factors and designs.</li>
 </ul>
-<p>Here is an “ontological report” on “exocrine pancreatic carcinoma”, provided by the European Bioinformatics Institute Ontology Lookup Service:</p>
+<section id="the-mondo-disease-ontology" class="level3" data-number="1.1.1"><h3 data-number="1.1.1" class="anchored" data-anchor-id="the-mondo-disease-ontology">
+<span class="header-section-number">1.1.1</span> The MONDO disease ontology</h3>
+<p>Here is an “ontological report” on the <a href="https://mondo.monarchinitiative.org/">MONDO</a> term “exocrine pancreatic carcinoma”, provided by the European Bioinformatics Institute Ontology Lookup Service:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/mondoExocPanc.jpg" class="img-fluid figure-img"></p>
 <figcaption>mondo snapshot</figcaption></figure>
@@ -263,7 +293,7 @@ window.Quarto = {
 <span><span class="co">##  OpenTelemetry error: there is no package called 'otelsdk'</span></span>
 <span><span class="co">##  OpenTelemetry error: there is no package called 'otelsdk'</span></span>
 <span><span class="va">mondo</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ontoProc2/man/semsql_connect.html">semsql_connect</a></span><span class="op">(</span>ontology<span class="op">=</span><span class="st">"mondo"</span><span class="op">)</span> <span class="co"># download on first attempt</span></span>
-<span><span class="co">##  Connected to SemanticSQL database: /root/.cache/R/BiocFileCache/1997777ad18_mondo.db</span></span>
+<span><span class="co">##  Connected to SemanticSQL database: /root/.cache/R/BiocFileCache/16b51559cb_mondo.db</span></span>
 <span><span class="co">##  Primary ontology prefix: MONDO</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/ontoProc2/man/report.html">report</a></span><span class="op">(</span><span class="va">mondo</span><span class="op">)</span></span>
 <span><span class="co">##  </span></span>
@@ -273,7 +303,7 @@ window.Quarto = {
 <span><span class="co">##  </span></span>
 <span><span class="co">##  Connection Details:</span></span>
 <span><span class="co">##  ---------------------------------------- </span></span>
-<span><span class="co">##    Database path:    /root/.cache/R/BiocFileCache/1997777ad18_mondo.db </span></span>
+<span><span class="co">##    Database path:    /root/.cache/R/BiocFileCache/16b51559cb_mondo.db </span></span>
 <span><span class="co">##    Ontology prefix:  MONDO </span></span>
 <span><span class="co">##    Status:           ✓   Connected </span></span>
 <span><span class="co">##  </span></span>
@@ -371,18 +401,269 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</section><section id="study-designs" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="study-designs">
-<span class="header-section-number">1.2</span> Study Designs</h2>
-<p>GWAS can be conducted under several study designs, each with distinct strengths and confounders. This section compares case-control studies, cohort studies, family-based designs, and biobank-scale analyses, with attention to population stratification and the importance of ancestry-matched controls.</p>
-</section><section id="manhattan-plots" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="manhattan-plots">
-<span class="header-section-number">1.3</span> Manhattan Plots</h2>
-<p>The Manhattan plot is the canonical visualization for GWAS results, displaying <span class="math inline">\(-\log_{10}(p)\)</span> values across the genome. This section explains how to interpret Manhattan plots, choose significance thresholds (genome-wide significance at <span class="math inline">\(p &lt; 5 \times 10^{-8}\)</span>), and identify credible association signals amid linkage disequilibrium patterns.</p>
-</section><section id="functional-interpretation" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="functional-interpretation">
-<span class="header-section-number">1.4</span> Functional Interpretation</h2>
-<p>Identifying a significant SNP is only the beginning. This section covers post-GWAS functional annotation — including regulatory element overlap, eQTL colocalization, gene prioritization strategies, and pathway enrichment — to move from statistical association to biological insight.</p>
+</section><section id="review" class="level3" data-number="1.1.2"><h3 data-number="1.1.2" class="anchored" data-anchor-id="review">
+<span class="header-section-number">1.1.2</span> Review</h3>
+<ul>
+<li>Ontologies are structured vocabularies characterizing a conceptual domain</li>
+<li>A given term maps to a fixed-length CURIE</li>
+<li>Web pages about ontological terms are addressed with IRIs</li>
+<li>The ontoProc2 package supports interactive work with ontologies</li>
+</ul></section><section id="exercises" class="level3" data-number="1.1.3"><h3 data-number="1.1.3" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">1.1.3</span> Exercises</h3>
+<ol type="1">
+<li><p>Use <code>search_labels</code> to acquire information and CURIEs related to a disease of interest, such as hypertension, obesity.</p></li>
+<li><p>Produce a plot of the “conceptual neighborhood” of the disease you chose. You will need a vector of MONDO CURIEs to pass to the <code>onto_plot2</code> function.</p></li>
+</ol></section></section><section id="gwas-basics" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="gwas-basics">
+<span class="header-section-number">1.2</span> GWAS basics</h2>
+<p>Here’s an example paper for a genome-wide association study.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/plateAggTitle.jpg" class="img-fluid figure-img"></p>
+<figcaption>Johnson title</figcaption></figure>
+</div>
+<p>This paper provides an unusually explicit presentation of the basic result: the distribution of a continuous outcome is shown to vary systematically by SNP genotype.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/plateletAgg.jpg" class="img-fluid figure-img"></p>
+<figcaption>Johnson boxplots</figcaption></figure>
+</div>
+<p>To help unearth the mechanisms underlying the observed relationship, reference information on chromatin accessibility and transcription factor binding in the vicinity of the main “hit” on chromosome 10 is provided.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/plateAggTFs.jpg" class="img-fluid figure-img"></p>
+<figcaption>Johnson binding</figcaption></figure>
+</div>
+<p>A basic aim of this section is to mobilize Bioconductor and other genomics data science resources to improve interpretability of GWAS results.</p>
+</section><section id="gwas-catalog" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="gwas-catalog">
+<span class="header-section-number">1.3</span> GWAS “Catalog”</h2>
+<p>We take for granted the existence of a catalog of genome wide association studies (GWAS). We will start to unpack this research concept. This table gives a flavor of topics that have been studied in this way.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">gwascat</span><span class="op">)</span></span>
+<span><span class="co">##  gwascat loaded.  Use makeCurrentGwascat() to extract current image.</span></span>
+<span><span class="co">##   from EBI.  The data folder of this package has some legacy extracts.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT">DT</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/S4Vectors">S4Vectors</a></span><span class="op">)</span></span>
+<span><span class="co">##  Loading required package: stats4</span></span>
+<span><span class="co">##  Loading required package: BiocGenerics</span></span>
+<span><span class="co">##  Loading required package: generics</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##  Attaching package: 'generics'</span></span>
+<span><span class="co">##  The following objects are masked from 'package:base':</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##      as.difftime, as.factor, as.ordered, intersect, is.element,</span></span>
+<span><span class="co">##      setdiff, setequal, union</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##  Attaching package: 'BiocGenerics'</span></span>
+<span><span class="co">##  The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##      IQR, mad, sd, var, xtabs</span></span>
+<span><span class="co">##  The following object is masked from 'package:utils':</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##      data</span></span>
+<span><span class="co">##  The following objects are masked from 'package:base':</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##      Filter, Find, Map, Position, Reduce, anyDuplicated, aperm,</span></span>
+<span><span class="co">##      append, as.data.frame, basename, cbind, colnames, dirname,</span></span>
+<span><span class="co">##      do.call, duplicated, eval, evalq, get, grep, grepl, is.unsorted,</span></span>
+<span><span class="co">##      lapply, mapply, match, mget, order, paste, pmax, pmax.int, pmin,</span></span>
+<span><span class="co">##      pmin.int, rank, rbind, rownames, sapply, saveRDS, scale,</span></span>
+<span><span class="co">##      sequence, table, tapply, transform, unique, unsplit, which.max,</span></span>
+<span><span class="co">##      which.min</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##  Attaching package: 'S4Vectors'</span></span>
+<span><span class="co">##  The following object is masked from 'package:utils':</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##      findMatches</span></span>
+<span><span class="co">##  The following objects are masked from 'package:base':</span></span>
+<span><span class="co">##  </span></span>
+<span><span class="co">##      I, expand.grid, unname</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"gwc_110626"</span>, package<span class="op">=</span><span class="st">"CSHLvc2026"</span><span class="op">)</span></span>
+<span><span class="co">#</span></span>
+<span><span class="co"># the following code produces an arbitrary collection of records</span></span>
+<span><span class="co"># from the gwas catalog, one per study instead of one per SNP</span></span>
+<span><span class="co">#</span></span>
+<span><span class="va">wrap_pmid</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"&lt;a href='https://pubmed.ncbi.nlm.nih.gov/%s' target='_blank'&gt;%s&lt;/a&gt;"</span>, <span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">dids</span> <span class="op">=</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">1000</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/duplicated.html">duplicated</a></span><span class="op">(</span><span class="va">gwc_110626</span><span class="op">$</span><span class="va">STUDY</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">1000</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">mc</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/Vector-class.html">mcols</a></span><span class="op">(</span><span class="va">gwc_110626</span><span class="op">[</span><span class="va">dids</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">sel</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">mc</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"STUDY"</span>, <span class="st">"PUBMEDID"</span>,</span>
+<span>  <span class="st">"INITIAL SAMPLE SIZE"</span>, <span class="st">"REPLICATION SAMPLE SIZE"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">sel</span><span class="op">$</span><span class="va">PUBMEDID</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/lapply.html">sapply</a></span><span class="op">(</span><span class="va">sel</span><span class="op">$</span><span class="va">PUBMEDID</span>, <span class="va">wrap_pmid</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span><span class="va">sel</span>, escape <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-88957a31106ec78260db" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-88957a31106ec78260db">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["Trans-ethnic and Ancestry-Specific Blood-Cell Genetics in 746,667 Individuals from 5 Global Populations.","The Polygenic and Monogenic Basis of Blood Traits and Diseases.","Leveraging Polygenic Functional Enrichment to Improve GWAS Power.","Genome-Wide Association Study of Genetic Variants Related to Anthracycline-Induced Cardiotoxicity in Early Breast Cancer.","Identification of Susceptibility Loci for Spontaneous Coronary Artery Dissection.","Study of 300,486 individuals identifies 148 independent genetic loci influencing general cognitive function.","Genetic architecture of human thinness compared to severe obesity.","Genome-wide associations of human gut microbiome variation and implications for causal inference analyses.","Genetic Associations of Chronotype in the Finnish General Population.","Quantitative genome-wide association study of six phenotypic subdomains identifies novel genome-wide significant variants in autism spectrum disorder.","Large-scale genome-wide association study identifies HLA class II variants associated with chronic HBV infection: a study from Taiwan Biobank.","Genome-wide association study of rate of cognitive decline in Alzheimer's disease patients identifies novel genes and pathways.","Shared Genetic and Experimental Links between Obesity-Related Traits and Asthma Subtypes in UK Biobank.","Genome-wide association study identifies TPH2 variant as a novel locus for severe CV-A6-associated hand, foot, and mouth disease in Han Chinese.","A Platelet Function Modulator of Thrombin Activation Is Causally Linked to Cardiovascular Disease and Affects PAR4 Receptor Signaling.","Multi-ethnic analysis reveals soluble L-selectin may be post-transcriptionally regulated by 3'UTR polymorphism: the Multi-Ethnic Study of Atherosclerosis (MESA).","PPARGC1B Is Associated with Nontraumatic Osteonecrosis of the Femoral Head: A Genomewide Association Study on a Chart-Reviewed Cohort."],["<a href='https://pubmed.ncbi.nlm.nih.gov/32888493' target='_blank'>32888493<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32888494' target='_blank'>32888494<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/30595370' target='_blank'>30595370<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32378780' target='_blank'>32378780<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32374345' target='_blank'>32374345<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/29844566' target='_blank'>29844566<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/30677029' target='_blank'>30677029<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32572223' target='_blank'>32572223<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32579418' target='_blank'>32579418<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32624584' target='_blank'>32624584<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32573827' target='_blank'>32573827<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32573913' target='_blank'>32573913<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/31669095' target='_blank'>31669095<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32634583' target='_blank'>32634583<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32649856' target='_blank'>32649856<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/25576479' target='_blank'>25576479<\/a>","<a href='https://pubmed.ncbi.nlm.nih.gov/32701715' target='_blank'>32701715<\/a>"],["486,823 European ancestry individuals","408,112 British individuals","approximately 443,000 European ancestry individuals","42 Korean ancestry cases, 215 Korean ancestry controls","484 European ancestry cases, 1,477 European ancestry controls","up to 300,486 European ancestry individuals","1,456 British ancestry obese children, 1,471 European ancestry thin adults","2,223 European ancestry individuals","7,436 Finnish ancestry individuals","2,509 individuals","1,810 East Asian cases, 9,002 East Asian seropositive controls","3,946 European ancestry cases","457,822 European ancestry individuals","115 Han Chinese ancestry severe cases, 115 Han Chinese ancestry mild controls","1,184 European ancestry individuals","620 European ancestry individuals, 600 Chinese ancestry individuals, 579 African American individuals, 604 Hispanic individuals","118 European ancestry cases, 56,811 European ancestry controls"],[null,null,null,null,"183 European ancestry cases, 340 European ancestry controls",null,"up to 7,526 British ancestry obese individuals, 7,962 obese individuals, up to 3,532 British ancestry thin individuals, 8,106 thin individuals","1,667 European ancestry individuals",null,null,"648 East Asian cases, 3,190 East Asian seropositive controls",null,null,null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>STUDY<\/th>\n      <th>PUBMEDID<\/th>\n      <th>INITIAL.SAMPLE.SIZE<\/th>\n      <th>REPLICATION.SAMPLE.SIZE<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"STUDY","targets":1},{"name":"PUBMEDID","targets":2},{"name":"INITIAL.SAMPLE.SIZE","targets":3},{"name":"REPLICATION.SAMPLE.SIZE","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>We’ve organized the table by ‘STUDY’ and ‘PUBMEDID’. Any given study will produce a collection of “associations”: typically these are single-nucleotide variants for which the allele counts are statistically associated with presence or magnitude of some outcome. It is reasonable to organize the entire catalog as a “GRanges” object.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gwc_110626</span></span>
+<span><span class="co">##  gwasloc instance with 946062 records and 38 attributes per record.</span></span>
+<span><span class="co">##  Extracted:  2026-06-11 </span></span>
+<span><span class="co">##  metadata()$badpos includes records for which no unique locus was given.</span></span>
+<span><span class="co">##  Genome:  GRCh38 </span></span>
+<span><span class="co">##  Excerpt:</span></span>
+<span><span class="co">##  GRanges object with 5 ranges and 3 metadata columns:</span></span>
+<span><span class="co">##        seqnames    ranges strand |          DISEASE/TRAIT        SNPS</span></span>
+<span><span class="co">##           &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; |            &lt;character&gt; &lt;character&gt;</span></span>
+<span><span class="co">##    [1]        4  83020217      * | Mean corpuscular hem..   rs1563646</span></span>
+<span><span class="co">##    [2]        4  87047646      * | Mean corpuscular hem..   rs6854749</span></span>
+<span><span class="co">##    [3]        4 121854912      * | Mean corpuscular hem..   rs4833236</span></span>
+<span><span class="co">##    [4]        4 123835365      * | Mean corpuscular hem..  rs77173582</span></span>
+<span><span class="co">##    [5]        4 127878475      * | Mean corpuscular hem.. rs141430271</span></span>
+<span><span class="co">##          P-VALUE</span></span>
+<span><span class="co">##        &lt;numeric&gt;</span></span>
+<span><span class="co">##    [1]     6e-12</span></span>
+<span><span class="co">##    [2]     4e-61</span></span>
+<span><span class="co">##    [3]     5e-64</span></span>
+<span><span class="co">##    [4]     2e-10</span></span>
+<span><span class="co">##    [5]     4e-31</span></span>
+<span><span class="co">##    -------</span></span>
+<span><span class="co">##    seqinfo: 24 sequences from GRCh38 genome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Our use of ontology above does not fully prepare us for the values found in “DISEASE/TRAIT” field of the catalog.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/grep.html">grep</a></span><span class="op">(</span><span class="st">"[Aa]sthma"</span>, <span class="va">gwc_110626</span><span class="op">$</span><span class="va">`DISEASE/TRAIT`</span>,value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">##   [1] "Asthma"                                                       </span></span>
+<span><span class="co">##   [2] "Asthma (time to event)"                                       </span></span>
+<span><span class="co">##   [3] "Adult onset asthma and/or BMI"                                </span></span>
+<span><span class="co">##   [4] "Nonatopic asthma and/or BMI"                                  </span></span>
+<span><span class="co">##   [5] "Adult onset asthma and/or waist-to-hip ratio adjusted for BMI"</span></span>
+<span><span class="co">##   [6] "Nonatopic asthma and/or waist-to-hip ratio adjusted for BMI"  </span></span>
+<span><span class="co">##   [7] "Adult onset asthma or type 2 diabetes"                        </span></span>
+<span><span class="co">##   [8] "Nonatopic asthma or type 2 diabetes"                          </span></span>
+<span><span class="co">##   [9] "Adult onset asthma or fasting glucose levels"                 </span></span>
+<span><span class="co">##  [10] "Nonatopic asthma or fasting glucose levels"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="exercises-1" class="level3" data-number="1.3.1"><h3 data-number="1.3.1" class="anchored" data-anchor-id="exercises-1">
+<span class="header-section-number">1.3.1</span> Exercises</h3>
+<ol type="1">
+<li><p>For the records identified above, in which the disease phrase includes ‘asthma’, what CURIEs are employed in the catalog? Do they make sense?</p></li>
+<li><p>Pick a phenotype of epidemiological interest, determine a relevant CURIE, and find it in the catalog. How many SNPs are associated with variation in the selected phenotype?</p></li>
+</ol></section></section><section id="manhattan-plots" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="manhattan-plots">
+<span class="header-section-number">1.4</span> Manhattan plots</h2>
+<p>The summary of a genome-wide association study plots <span class="math inline">\(-\log10 p\)</span> for the test of no association between SNP genotype and outcome, against the chromsome location of the SNP.</p>
+<p>We have a simple utility function for producing such plots for studies in the GWAS catalog.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vjcitn/CSHLvc2026">CSHLvc2026</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"gwc_110626"</span>, package<span class="op">=</span><span class="st">"CSHLvc2026"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/CSHLvc2026/man/make_manh.html">make_manh</a></span><span class="op">(</span><span class="st">"GCST90002322"</span>, <span class="va">gwc_110626</span><span class="op">)</span></span>
+<span><span class="co">##  Warning in replace_0_pval(x[[pval.colname]]): Replacing p-value of 0 with</span></span>
+<span><span class="co">##  the minimum.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="introduction-to-gwas_files/figure-html/lkman1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="exercises-2" class="level3" data-number="1.4.1"><h3 data-number="1.4.1" class="anchored" data-anchor-id="exercises-2">
+<span class="header-section-number">1.4.1</span> Exercises</h3>
+<ol type="1">
+<li><p>Produce the manhattan plot for a study of interest to you. Add the study title to your display. Hint: apply <code>ggtitle</code>.</p></li>
+<li><p>Arrange for the gene symbols to be plotted on the manhattan plot for “hits” of interest to you.</p></li>
+<li><p>(Advanced) Modify <code>make_manh</code> to produce a plotly display in which text such as gene name and SNP position are shown on hover.</p></li>
+</ol></section></section><section id="functional-interpretation" class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="functional-interpretation">
+<span class="header-section-number">1.5</span> Functional Interpretation</h2>
+<p>We return to the colocalization of GWAS hit and TF binding peaks from the Johnson paper.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/plateAggTFs.jpg" class="img-fluid figure-img"></p>
+<figcaption>Johnson binding</figcaption></figure>
+</div>
+<p>We will use the bedbaser package to interact with a large library of “BED” files – genomic intervals with scores measuring experimental effects observed within these intervals.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bedbaser">bedbaser</a></span><span class="op">)</span></span>
+<span><span class="co">##  OpenTelemetry error: there is no package called 'otelsdk'</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/GenomicRanges">GenomicRanges</a></span><span class="op">)</span></span>
+<span><span class="co">##  Loading required package: IRanges</span></span>
+<span><span class="co">##  Loading required package: Seqinfo</span></span>
+<span></span>
+<span><span class="co"># Initialize the BEDbase API client</span></span>
+<span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bedbaser/man/BEDbase.html">BEDbase</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">##  661213 BED files available.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We search the library for bed files for ChIP-seq experiments involving EP300 in K562 cells. Note the limit parameter. This is an arbitrary selection reflecting experiences with long delays with large values of this parameter.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ep300_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bedbaser/man/bb_bed_text_search.html">bb_bed_text_search</a></span><span class="op">(</span></span>
+<span>  <span class="va">bb</span>,</span>
+<span>  query <span class="op">=</span> <span class="st">"EP300 ChIP-seq K562 hg38"</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Review the results in an interactive table. The search procedure <a href="https://docs.bedbase.org/bedbase/user/bedbase-search/">is documented</a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">ep300_search</span><span class="op">)</span><span class="op">[</span>,<span class="op">-</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d7030a3f95cda8638af8" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d7030a3f95cda8638af8">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["31284feb04351d409d0f19d27c857980","acf1bce6a2006b6a912e68581b13de9e","0fb3803d927f161e916dab0dc3851b97","f1ff654263b9ca1b5ba72b4f050a07ae","163b43d946697dc4afbc5bb7524a6795","88d331e57e60a027395b22dd17df9ca5","eac1285d36bf27eaff0f6d162509c08a","f524305e876a16f0e7cf40f118526c34","bdd003e41390a1c3534652c2d25a4ed3","80179a031d3b0799669bd78fef60584e","1c6b78f94fe80b0bf7ec990810819d34","84e2b3cb0205631907ea2212d4ef1e3f","7cfa48b5deeb0f0a1836a2003f8ecf42","d53bd9b4aaae52b2b2bb9b393fd96370","6ead5574e8b1763eacae5af638c2fa39","b948be4efcbb4b67a7dc8377ce6aaef4","3501b165206bf0551dd29d2f4b29e159","3378ed2c353a1aec449523776c9635e6","63bf29f2e418deeef80fcc539746cc94","579fd1c3e8892ecfc6db78ce5b0bb4cd"],["EP300","K562-H3K27me3_ChIP_EPZ","encode_17235","K562-H3K27ac_ChIP_EPZ","K562-H3K4me3_ChIP_EPZ","encode_17234","ChIP_p300_gastruloids_1","encode_17236","ChIP_p300_gastruloids_2","encode_16488","encode_9854","A673_ChIP_EP300_steadystate_REP1_221119_CAGATC_S1","H3K27ac_EpiSC_WT","encode_4598","CBP-P300 WTEpiSCs 24h rep1","786-O P300 ChIP-seq","encode_17232","encode_17233","ChIP_H3K27ac_dox_p300_inhibitor_A485_4xTetO_mESC_spike_rep2","encode_3217"],["Re-analysis of:, GSM803499, Raw file(s):, ENCFF000PMZ ENCFF000PNA, can be retrieved from ENCODE:, https://www.encodeproject.org/experiments/ENCSR000BLW","","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","","","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","","EP300 TF ChIP-seq experiment on K562 (Blast phase chronic myelogenous leukemia, BCR-ABL1 positive cell line from pleural effusion)","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","sgGFP control ChIP linked to sgMLL3/4 p300 ChIP","","EP300 TF ChIP-seq experiment on H1 (Embryonic stem cell, Embryonic stem cell from blastocyst)","ChIP-seq","","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","GM_L2639","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)"],["HepG2","K562","GM12878","K562","K562","GM12878","E14_triple reporter","GM12878","E14_triple reporter","K562","GM12878","A673","","H1","","","GM12878","GM12878","K562","GM12878"],["","","","","","","gastruloids","","gastruloids","","","","ES-E14 derived EpiSC","","","","","","",""],["","","","","","","","","","","","","","","EpiSCs","","","","",""],["","","EP300","","","EP300","","EP300","","EP300","EP300","","","EP300","","","EP300","EP300","","EP300"],["","EPZ-011989","","EPZ-011989","EPZ-011989","","","","","","","","","","24h CHIR99021 + Fgf8","","","","biorep 2, + 24 hr 1000ng/mL dox + 24.5 hr 3uM A485",""],["ChIP-Seq","ChIP-Seq","TF ChIP-seq","ChIP-Seq","ChIP-Seq","TF ChIP-seq","ChIP-seq","TF ChIP-seq","ChIP-seq","TF ChIP-seq","TF ChIP-seq","ChIP-Seq","ChIP-Seq","TF ChIP-seq","ChIP-Seq","ChIP-Seq","TF ChIP-seq","TF ChIP-seq","ChIP-Seq","TF ChIP-seq"],["hg19","","hg38","","","hg38","mm10","hg38","mm10","hg38","hg38","","","hg38","mm9","hg19","hg38","hg38","","hg38"],["Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens","Mus musculus","Homo sapiens","Mus musculus","Homo sapiens","Homo sapiens","Homo sapiens","Mus musculus","Homo sapiens","Mus musculus","Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens"],["0.5","0.5","0.33333334","0.33333334","0.25","0.25","0.2","0.2","0.16666667","0.16666667","0.14285715","0.14285715","0.125","0.125","0.11388889","0.11111111","0.11111111","0.1","0.09090909","0.09090909"],["EP300","K562-H3K27me3_ChIP_EPZ","encode_17235","K562-H3K27ac_ChIP_EPZ","K562-H3K4me3_ChIP_EPZ","encode_17234","ChIP_p300_gastruloids_1","encode_17236","ChIP_p300_gastruloids_2","encode_16488","encode_9854","A673_ChIP_EP300_steadystate_REP1_221119_CAGATC_S1","H3K27ac_EpiSC_WT","encode_4598","CBP-P300 WTEpiSCs 24h rep1","786-O P300 ChIP-seq","encode_17232","encode_17233","ChIP_H3K27ac_dox_p300_inhibitor_A485_4xTetO_mESC_spike_rep2","encode_3217"],["hg19","hg38","hg38","hg38","hg19","hg38","mm38","hg38","mm38","hg38","hg38","hg38","mm39","hg38","mm9","hg19","hg38","hg38","hg19","hg38"],["GOIHeGSorDrbznRxihs5rIb6vTiTKaw7","Dx_M8skbJqROkfXhhQRtWejcCyewRbdL","EiFob05aCWgVU_B_Ae0cypnQut3cxUP1","Dx_M8skbJqROkfXhhQRtWejcCyewRbdL","lXa-sGAmSafYXHN4iEwup0EsQh5F1krA","jFm0Uca8a7vK2cbuIQgBopjBilgCFheD","TQORtixTJqM3Su9dmtACKc7hNHAceE4I","EiFob05aCWgVU_B_Ae0cypnQut3cxUP1","TQORtixTJqM3Su9dmtACKc7hNHAceE4I","jFm0Uca8a7vK2cbuIQgBopjBilgCFheD","jFm0Uca8a7vK2cbuIQgBopjBilgCFheD","tmnbiAyj2fke68d_TYjq2g487US8C15r","WsOG-InFnIta0rqSy1KUBjrFrukbnE5j","EiFob05aCWgVU_B_Ae0cypnQut3cxUP1","4mvptys3ckGgiUCcly4HOHB40IhpwwVT","ThZcNYiLuWWL86NdJ8dvvJG15K9mW3Fo","jFm0Uca8a7vK2cbuIQgBopjBilgCFheD","jFm0Uca8a7vK2cbuIQgBopjBilgCFheD","GOIHeGSorDrbznRxihs5rIb6vTiTKaw7","EiFob05aCWgVU_B_Ae0cypnQut3cxUP1"],["bed6+4","bed6+3","bed6+4","bed6+3","bed6+3","bed6+4","bed6+4","bed6+4","bed6+4","bed6+4","bed6+4","bed6+4","bed6+4","bed6+4","bed3+0","bed4+1","bed6+4","bed6+4","bed6+4","bed6+4"],["encode_narrowpeak","encode_broadpeak","encode_narrowpeak","encode_broadpeak","encode_broadpeak","encode_narrowpeak","encode_narrowpeak_rs","encode_narrowpeak","encode_narrowpeak_rs","encode_narrowpeak","encode_narrowpeak","encode_narrowpeak_rs","encode_narrowpeak_rs","encode_narrowpeak","ucsc_bed","bed_like","encode_narrowpeak","encode_narrowpeak","encode_narrowpeak_rs","encode_narrowpeak"],["6","6","6","6","6","6","6","6","6","6","6","6","6","6","3","4","6","6","6","6"],["4","3","4","3","3","4","4","4","4","4","4","4","4","4","0","1","4","4","4","4"],["31284feb04351d409d0f19d27c857980","acf1bce6a2006b6a912e68581b13de9e","0fb3803d927f161e916dab0dc3851b97","f1ff654263b9ca1b5ba72b4f050a07ae","163b43d946697dc4afbc5bb7524a6795","88d331e57e60a027395b22dd17df9ca5","eac1285d36bf27eaff0f6d162509c08a","f524305e876a16f0e7cf40f118526c34","bdd003e41390a1c3534652c2d25a4ed3","80179a031d3b0799669bd78fef60584e","1c6b78f94fe80b0bf7ec990810819d34","84e2b3cb0205631907ea2212d4ef1e3f","7cfa48b5deeb0f0a1836a2003f8ecf42","d53bd9b4aaae52b2b2bb9b393fd96370","6ead5574e8b1763eacae5af638c2fa39","b948be4efcbb4b67a7dc8377ce6aaef4","3501b165206bf0551dd29d2f4b29e159","3378ed2c353a1aec449523776c9635e6","63bf29f2e418deeef80fcc539746cc94","579fd1c3e8892ecfc6db78ce5b0bb4cd"],["Re-analysis of:, GSM803499, Raw file(s):, ENCFF000PMZ ENCFF000PNA, can be retrieved from ENCODE:, https://www.encodeproject.org/experiments/ENCSR000BLW","","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","","","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","","EP300 TF ChIP-seq experiment on K562 (Blast phase chronic myelogenous leukemia, BCR-ABL1 positive cell line from pleural effusion)","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","sgGFP control ChIP linked to sgMLL3/4 p300 ChIP","","EP300 TF ChIP-seq experiment on H1 (Embryonic stem cell, Embryonic stem cell from blastocyst)","ChIP-seq","","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)","GM_L2639","EP300 TF ChIP-seq experiment on GM12878 (Transformed cell line from blood)"],["2025-05-23T22:52:09.218464Z","2025-06-02T02:41:05.617343Z","2025-05-02T18:01:25.007195Z","2025-06-02T02:45:26.819780Z","2025-06-02T02:43:15.900414Z","2025-05-02T18:00:19.702836Z","2025-05-29T04:47:57.906955Z","2025-05-02T18:02:35.198794Z","2025-05-29T04:49:01.912133Z","2025-05-02T02:42:43.216511Z","2025-04-26T00:03:52.623388Z","2025-08-01T22:33:59.598696Z","2025-05-25T14:08:07.928027Z","2025-04-24T00:30:50.076353Z","2025-06-03T02:10:21.762028Z","2025-05-22T23:45:09.202975Z","2025-05-02T17:58:36.815141Z","2025-05-02T17:59:15.159080Z","2025-05-23T21:56:47.907472Z","2025-04-25T08:17:59.076042Z"],["2026-02-07T22:26:30.861635Z","2026-02-07T22:26:30.861635Z","2026-04-14T18:44:58.715480Z","2026-02-07T22:26:30.861635Z","2026-02-07T22:26:30.861635Z","2026-04-14T18:44:03.069970Z","2026-02-07T22:26:30.861635Z","2026-04-14T18:50:36.912922Z","2026-02-07T22:26:30.861635Z","2026-04-14T18:46:22.335804Z","2026-04-14T18:46:15.895182Z","2026-04-14T18:48:40.632056Z","2026-02-07T22:26:30.861635Z","2026-04-14T18:42:16.835476Z","2026-02-07T22:26:30.861635Z","2026-02-07T22:26:30.861635Z","2026-04-14T18:46:50.117285Z","2026-04-14T18:50:25.221421Z","2026-02-07T22:26:30.861635Z","2026-04-14T18:51:56.734502Z"],["FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE","FALSE"],["DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042","DUO:0000042"],["Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens","Mus musculus","Homo sapiens","Mus musculus","Homo sapiens","Homo sapiens","Homo sapiens","Mus musculus","Homo sapiens","Mus musculus","Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens","Homo sapiens"],["9606","9606","9606","9606","9606","9606","10090","9606","10090","9606","9606","9606","10090","9606","10090","9606","9606","9606","9606","9606"],["","","","","","","endogenous p300-V5-miniTurboID","","endogenous p300-V5-miniTurboID","","","","Wild type (WT)","","","","","","",""],["","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","",""],["","","","","","","gastruloids","","gastruloids","","","","ES-E14 derived EpiSC","","","","","","",""],["HepG2","K562","GM12878","K562","K562","GM12878","E14_triple reporter","GM12878","E14_triple reporter","K562","GM12878","A673","","H1","","786-O","GM12878","GM12878","K562","GM12878"],["","","","","","","","","","","","","","","EpiSCs","","","","",""],["genomic","genomic","","genomic","genomic","","genomic","","genomic","","","genomic","genomic","","genomic","genomic","","","genomic",""],["ChIP-Seq","ChIP-Seq","TF ChIP-seq","ChIP-Seq","ChIP-Seq","TF ChIP-seq","ChIP-Seq","TF ChIP-seq","ChIP-Seq","TF ChIP-seq","TF ChIP-seq","ChIP-Seq","ChIP-Seq","TF ChIP-seq","ChIP-Seq","ChIP-Seq","TF ChIP-seq","TF ChIP-seq","ChIP-Seq","TF ChIP-seq"],["EP300","H3K27me3 (C37B11, Cell Signaling)","","H3K27ac (ab4729, Abcam)","H3K4me3 (ab8580, Abcam)","","V5","","V5","","","","H3K27ac","","Cell Signaling Technology, #4771","P300 (sc-585, Santa Cruz)","","","anti-H3K27ac (Abcam ab4729)",""],["","","EP300","","","EP300","","EP300","","EP300","EP300","","","EP300","","","EP300","EP300","","EP300"],["","EPZ-011989","","EPZ-011989","EPZ-011989","","","","","","","","","","24h CHIR99021 + Fgf8","","","","biorep 2, + 24 hr 1000ng/mL dox + 24.5 hr 3uM A485",""],["geo:gsm2797515","geo:gsm3712094","encode:ENCFF127KCF","geo:gsm3712098","geo:gsm3712096","encode:ENCFF445UCE","geo:gsm7147967","encode:ENCFF114IQB","geo:gsm7147968","encode:ENCFF765ZUN","encode:ENCFF996TEH","geo:gsm8253528","geo:gsm5138717","encode:ENCFF834UVX","geo:gsm2253706","geo:gsm2293478","encode:ENCFF696CNS","encode:ENCFF865UDD","geo:gsm8499759","encode:ENCFF803HGS"],["geo:gse104247",null,null,null,null,null,null,null,null,null,null,"geo:gse266666",null,null,"geo:gse84899",null,null,null,"geo:gse276514",null],["GSM2797515_EP300_IDR0.02_narrowPeak.bed.gz","GSM3712094_K562_H3K27me3_EPZ_hg19.bam_peaks.broadPeak.gz","ENCFF127KCF.bed.gz","GSM3712098_K562_H3K27ac_EPZ_hg19.bam_peaks.broadPeak.gz","GSM3712096_K562_H3K4me3_EPZ_hg19.bam_peaks.broadPeak.gz","ENCFF445UCE.bed.gz","GSM7147967_GRCm38.p6-mESC_p300mT_cl18_Gastruloids_v5_1_Z09_S18_peaks.narrowPeak.chr.narrowPeak.gz","ENCFF114IQB.bed.gz","GSM7147968_GRCm38.p6-mESC_p300mT_cl18_Gastruloids_v5_2_Z10_S13_peaks.narrowPeak.chr.narrowPeak.gz","ENCFF765ZUN.bed.gz","ENCFF996TEH.bed.gz","GSM8253528_A673_ChIP_EP300_steadystate_REP1_221119_CAGATC_S1_hg38_bedsorted_peaks.narrowPeak.gz","GSM5138717_H3K27ac_EpiSC_WT_vs_Input_EpiSC_WT_q_0.05_peaks.narrowPeak.gz","ENCFF834UVX.bed.gz","GSM2253706_CBP-P300_WTEpiSCs_24h_rep1.bed.gz","GSM2293478_RCC147.merged.bam.sort.bam.mapQ.bam.bed_vs_RCC150.merged.bam.sort.bam.mapQ.bam.bed_peaks.bed.gz","ENCFF696CNS.bed.gz","ENCFF865UDD.bed.gz","GSM8499759_L2639-H3K27ac_dox_p300_inhibitor_A485_4xTetO_mESC_spike_rep2.2x36mers.hg38-male+opJS5_4x_TetO_b2.unique.dedupMACS2_peaks.narrowPeak.gz","ENCFF803HGS.bed.gz"],["FALSE","FALSE","TRUE","FALSE","FALSE","TRUE","FALSE","TRUE","FALSE","TRUE","TRUE","FALSE","TRUE","TRUE","FALSE","FALSE","TRUE","TRUE","FALSE","TRUE"],[null,"geo:gse129380","encode","geo:gse129380","geo:gse129380","encode","geo:gse229024","encode","geo:gse229024","encode","encode",null,"geo:gse168411","encode",null,"geo:gse86095","encode","encode",null,"encode"],[null,"geo:gse129382","encode:ENCSR000DZD","geo:gse129382","geo:gse129382","encode:ENCSR000DZD","geo:gse229029","encode:ENCSR000DZD","geo:gse229029","encode:ENCSR000EGE","encode:ENCSR000DZG",null,"geo:gse168415","encode:ENCSR000BKK",null,"geo:gse86092","encode:ENCSR000DZD","encode:ENCSR000DZD",null,"encode:ENCSR000BHB"],[null,null,"2230c535660fb4774114bfa966a62f823fdb6d21acf138d4",null,null,"2230c535660fb4774114bfa966a62f823fdb6d21acf138d4",null,"2230c535660fb4774114bfa966a62f823fdb6d21acf138d4",null,"2230c535660fb4774114bfa966a62f823fdb6d21acf138d4","2230c535660fb4774114bfa966a62f823fdb6d21acf138d4",null,null,"2230c535660fb4774114bfa966a62f823fdb6d21acf138d4",null,null,"2230c535660fb4774114bfa966a62f823fdb6d21acf138d4","2230c535660fb4774114bfa966a62f823fdb6d21acf138d4",null,"2230c535660fb4774114bfa966a62f823fdb6d21acf138d4"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>payload.name<\/th>\n      <th>payload.description<\/th>\n      <th>payload.cell_line<\/th>\n      <th>payload.cell_type<\/th>\n      <th>payload.tissue<\/th>\n      <th>payload.target<\/th>\n      <th>payload.treatment<\/th>\n      <th>payload.assay<\/th>\n      <th>payload.genome_alias<\/th>\n      <th>payload.species_name<\/th>\n      <th>score<\/th>\n      <th>metadata.name<\/th>\n      <th>metadata.genome_alias<\/th>\n      <th>metadata.genome_digest<\/th>\n      <th>metadata.bed_compliance<\/th>\n      <th>metadata.data_format<\/th>\n      <th>metadata.compliant_columns<\/th>\n      <th>metadata.non_compliant_columns<\/th>\n      <th>metadata.id<\/th>\n      <th>metadata.description<\/th>\n      <th>metadata.submission_date<\/th>\n      <th>metadata.last_update_date<\/th>\n      <th>metadata.is_universe<\/th>\n      <th>metadata.license_id<\/th>\n      <th>metadata.annotation.species_name<\/th>\n      <th>metadata.annotation.species_id<\/th>\n      <th>metadata.annotation.genotype<\/th>\n      <th>metadata.annotation.phenotype<\/th>\n      <th>metadata.annotation.description<\/th>\n      <th>metadata.annotation.cell_type<\/th>\n      <th>metadata.annotation.cell_line<\/th>\n      <th>metadata.annotation.tissue<\/th>\n      <th>metadata.annotation.library_source<\/th>\n      <th>metadata.annotation.assay<\/th>\n      <th>metadata.annotation.antibody<\/th>\n      <th>metadata.annotation.target<\/th>\n      <th>metadata.annotation.treatment<\/th>\n      <th>metadata.annotation.global_sample_id<\/th>\n      <th>metadata.annotation.global_experiment_id<\/th>\n      <th>metadata.annotation.original_file_name<\/th>\n      <th>metadata.processed<\/th>\n      <th>metadata.annotation.global_experiment_id1<\/th>\n      <th>metadata.annotation.global_experiment_id2<\/th>\n      <th>payload.genome_digest<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"id","targets":1},{"name":"payload.name","targets":2},{"name":"payload.description","targets":3},{"name":"payload.cell_line","targets":4},{"name":"payload.cell_type","targets":5},{"name":"payload.tissue","targets":6},{"name":"payload.target","targets":7},{"name":"payload.treatment","targets":8},{"name":"payload.assay","targets":9},{"name":"payload.genome_alias","targets":10},{"name":"payload.species_name","targets":11},{"name":"score","targets":12},{"name":"metadata.name","targets":13},{"name":"metadata.genome_alias","targets":14},{"name":"metadata.genome_digest","targets":15},{"name":"metadata.bed_compliance","targets":16},{"name":"metadata.data_format","targets":17},{"name":"metadata.compliant_columns","targets":18},{"name":"metadata.non_compliant_columns","targets":19},{"name":"metadata.id","targets":20},{"name":"metadata.description","targets":21},{"name":"metadata.submission_date","targets":22},{"name":"metadata.last_update_date","targets":23},{"name":"metadata.is_universe","targets":24},{"name":"metadata.license_id","targets":25},{"name":"metadata.annotation.species_name","targets":26},{"name":"metadata.annotation.species_id","targets":27},{"name":"metadata.annotation.genotype","targets":28},{"name":"metadata.annotation.phenotype","targets":29},{"name":"metadata.annotation.description","targets":30},{"name":"metadata.annotation.cell_type","targets":31},{"name":"metadata.annotation.cell_line","targets":32},{"name":"metadata.annotation.tissue","targets":33},{"name":"metadata.annotation.library_source","targets":34},{"name":"metadata.annotation.assay","targets":35},{"name":"metadata.annotation.antibody","targets":36},{"name":"metadata.annotation.target","targets":37},{"name":"metadata.annotation.treatment","targets":38},{"name":"metadata.annotation.global_sample_id","targets":39},{"name":"metadata.annotation.global_experiment_id","targets":40},{"name":"metadata.annotation.original_file_name","targets":41},{"name":"metadata.processed","targets":42},{"name":"metadata.annotation.global_experiment_id1","targets":43},{"name":"metadata.annotation.global_experiment_id2","targets":44},{"name":"payload.genome_digest","targets":45}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Use the search/filter box at the top to confine attention to records involving EP300. We will retrieve the bed file with id “80179a031d3b0799669bd78fef60584e”.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k562_ep300_peaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bedbaser/man/bb_to_granges.html">bb_to_granges</a></span><span class="op">(</span><span class="va">bb</span>, bed_id <span class="op">=</span> <span class="st">"80179a031d3b0799669bd78fef60584e"</span><span class="op">)</span></span>
+<span><span class="va">k562_ep300_peaks</span></span>
+<span><span class="co">##  GRanges object with 300000 ranges and 6 metadata columns:</span></span>
+<span><span class="co">##             seqnames              ranges strand |        name     score</span></span>
+<span><span class="co">##                &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;numeric&gt;</span></span>
+<span><span class="co">##         [1]     chr1       115585-115888      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##         [2]     chr1       778571-778874      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##         [3]     chr1       827325-827628      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##         [4]     chr1       842824-843127      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##         [5]     chr1       881702-882005      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##         ...      ...                 ...    ... .         ...       ...</span></span>
+<span><span class="co">##    [299996]     chrX 155979690-155979993      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##    [299997]     chrX 155994673-155994976      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##    [299998]     chrX 155997561-155997864      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##    [299999]     chrX 156001644-156001799      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##    [300000]     chrX 156002490-156002793      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##             signalValue    pValue    qValue      peak</span></span>
+<span><span class="co">##               &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;integer&gt;</span></span>
+<span><span class="co">##         [1]    15.94134        -1  3.589391       152</span></span>
+<span><span class="co">##         [2]    17.55389        -1  3.810204       152</span></span>
+<span><span class="co">##         [3]     4.98826        -1  0.347475       152</span></span>
+<span><span class="co">##         [4]     5.28289        -1  0.384436       152</span></span>
+<span><span class="co">##         [5]     6.97501        -1  0.867321       152</span></span>
+<span><span class="co">##         ...         ...       ...       ...       ...</span></span>
+<span><span class="co">##    [299996]     4.34307        -1  0.199389       152</span></span>
+<span><span class="co">##    [299997]     4.77319        -1  0.279063       152</span></span>
+<span><span class="co">##    [299998]    23.96685        -1  4.022854       152</span></span>
+<span><span class="co">##    [299999]    75.57565        -1  4.206745        82</span></span>
+<span><span class="co">##    [300000]    16.47409        -1  3.573077       152</span></span>
+<span><span class="co">##    -------</span></span>
+<span><span class="co">##    seqinfo: 711 sequences (1 circular) from hg38 genome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The SNP identified in the plot is expressed as a GRanges, so that we can check for its relationship to an EP300 peak.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">target_variant</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html">GRanges</a></span><span class="op">(</span></span>
+<span>  seqnames <span class="op">=</span> <span class="st">"chr10"</span>,</span>
+<span>  ranges <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/IRanges/man/IRanges-constructor.html">IRanges</a></span><span class="op">(</span>start <span class="op">=</span> <span class="fl">119250744</span>, end <span class="op">=</span> <span class="fl">119250744</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/IRanges/man/findOverlaps-methods.html">subsetByOverlaps</a></span><span class="op">(</span><span class="va">k562_ep300_peaks</span>, <span class="va">target_variant</span><span class="op">)</span></span>
+<span><span class="co">##  GRanges object with 1 range and 6 metadata columns:</span></span>
+<span><span class="co">##        seqnames              ranges strand |        name     score</span></span>
+<span><span class="co">##           &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;numeric&gt;</span></span>
+<span><span class="co">##    [1]    chr10 119250615-119250918      * |        &lt;NA&gt;         0</span></span>
+<span><span class="co">##        signalValue    pValue    qValue      peak</span></span>
+<span><span class="co">##          &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;integer&gt;</span></span>
+<span><span class="co">##    [1]     54.7271        -1   4.20674       152</span></span>
+<span><span class="co">##    -------</span></span>
+<span><span class="co">##    seqinfo: 711 sequences (1 circular) from hg38 genome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This result is consistent with the finding in the figure above.</p>
+<section id="exercises-3" class="level3" data-number="1.5.1"><h3 data-number="1.5.1" class="anchored" data-anchor-id="exercises-3">
+<span class="header-section-number">1.5.1</span> Exercises</h3>
+<ol type="1">
+<li><p>The <code>ep300_search</code> table produced above has results for other cell lines. Are there other cell lines in which a similar finding arises?</p></li>
+<li><p>Use similar methods to check binding patterns for other transcription factors whose binding might be disrupted by the target variant. You will need to modify the query for <code>bb_bed_text_search</code> and acquire peak sets.</p></li>
+<li><p>“GWAS mini journal club”. Use the GWAS catalog to identify studies, genes, and SNPs of interest to you. Prepare a short presentation on</p></li>
+</ol>
+<ul>
+<li>the phenotype or disease under study,</li>
+<li>the population in which the study was conducted, and the study design,</li>
+<li>the minor allele frequencies of identified “hits”,</li>
+<li>the scope of associations discovered,</li>
+<li>prospects for functional interpretation of the associations using bedbase or other tools.</li>
+</ul>
 
 
-</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
