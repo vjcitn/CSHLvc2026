@@ -1,3 +1,7 @@
+---
+prefer-html: true
+---
+
 # Introduction to GWAS
 
 This chapter introduces genome-wide association studies (GWAS), covering the
