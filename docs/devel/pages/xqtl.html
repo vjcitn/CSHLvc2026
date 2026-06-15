@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; xQTL – CSHLvc2026</title>
+<title>2&nbsp; Quantitative trait loci for molecular phenotypes (xQTL) – CSHLvc2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/xqtl.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">xQTL</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/xqtl.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Quantitative trait loci for molecular phenotypes (xQTL)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/xqtl.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">xQTL</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Quantitative trait loci for molecular phenotypes (xQTL)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -171,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">xQTL</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Quantitative trait loci for molecular phenotypes (xQTL)</span></h1>
 </div>
 
 
@@ -188,7 +188,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This chapter covers expression and molecular quantitative trait loci (xQTL), connecting genetic variation to intermediate molecular phenotypes as a bridge between GWAS signals and biological mechanisms.</p>
+<p>At the inception of Mendelian genetics, traits studied were discrete characteristics. Quantitative trait loci (QTLs) are genetic elements that are associated with “continuous” quantitative characteristic.</p>
+<p>“QTL mapping” has a long tradition. Essentially, in a collection of study subjects, an outcome is measured, for example, weight, and then chromosomes are scanned for variants that show association with variation in the outcome.</p>
+<p>The figure from Johnson’s study in 1.2 above is an example. The trait is a score for platelet aggregation, and the variant is the SNP rs10886430. The functional followup of the hit focused on possible effects of the variant on transcription factor binding. This could be considered a followup using “reference” information, specifically obtained through ChIP-seq on cultured cell lines.</p>
+<p>Another approach to illuminating GWAS findings concerns colocalization of GWAS hits with “population-level” information on other QTLs produced using high-throughput assays. eQTLs are genetic loci (typically SNPs) that show association with gene expression. mQTLs are loci associated with variation in DNA methylation. sQTL and pQTL are terms used for loci associated with splicing and protein abundance respectively.</p>
+<p>For eQTL, the quantitative phenotype may have 20,000-60,000 features (genes or transcripts), each of which may be tested for association with millions of SNP genotypes. Computational burdens and multiple testing adjustments required for such general searches are significant. Two species of testing practices are commonly distinguished:</p>
+<ul>
+<li><p><em>cis</em> searches: each molecular phenotype is tested for association with variants “nearby” on the same chromosome</p></li>
+<li><p><em>trans</em> searches: all tests that are not <em>cis</em> are considered</p></li>
+</ul>
+<p>A research consortium “eQTLgen” collects information on eQTL studies. We can check for <em>cis</em> findings on rs10886430:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/eqtlgen1a.jpg" class="img-fluid figure-img"></p>
+<figcaption>eQTLgen snapshot</figcaption>
+</figure>
+</div>
+<p>There are also <em>trans</em> findings for GRK5 expression:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/eqtlTrans1.jpg" class="img-fluid figure-img"></p>
+<figcaption>eQTLgen trans</figcaption>
+</figure>
+</div>
+<p>The lead SNP in the Johnson figure is associated with expression of three different genes in <em>cis</em>, and GRK5 expression is associated with four different SNPs in <em>trans</em>. Do these findings help elucidate mechanisms of thrombin-associated platelet aggregation?</p>
+<p>In this section we aim to understand how to structure data and perform searches for xQTL, and to carry out tasks of integrative interpretation.</p>
 
 
 
