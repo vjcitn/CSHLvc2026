@@ -13,3 +13,7 @@
 #' a liftOver chain as defined by rtracklayer, for hg19 to hg38
 #' @docType data
 "ch_19to38"
+
+#' a data.frame with ancestry information on 1000 genomes samples
+#' @docType data
+"anno1kg"

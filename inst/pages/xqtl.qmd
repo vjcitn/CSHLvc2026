@@ -4,6 +4,8 @@ prefer-html: true
 
 # Quantitative trait loci for molecular phenotypes (xQTL)
 
+## Introduction
+
 At the inception of Mendelian genetics, traits studied were discrete
 characteristics.  Quantitative trait loci (QTLs) are genetic
 elements that are associated with "continuous" quantitative
@@ -58,3 +60,41 @@ platelet aggregation?
 In this section we aim to understand how to structure
 data and perform searches for xQTL, and to carry out
 tasks of integrative interpretation.
+
+## Genotype data for 731 1KG samples
+
+We focus on chromosome 17.  We obtained PLINK "bed", "bim", "fam" files
+for 731 thousand genome samples.  The following code will extract
+the files from cloud storage and place them for use in a local cache.
+
+```{r lkgeno, message=FALSE}
+library(CSHLvc2026)
+library(BEDMatrix)
+geno = cache_mage_chr17_plink()
+gt = BEDMatrix(geno$bed)
+gt
+```
+
+A sample of SNPs is used to create "ancestry PCs".
+
+```{r makepca}
+set.seed(1234)
+pp = prcomp(gt[,sample(1:2e6, size=10000)])
+dim(pp$x)
+pairs(pp$x[,1:5], pch=19, cex=.5)
+```
+
+### Exercises
+
+1. Use the data in the `anno1kg` data.frame to color the points
+in the pairs plot according to ancestral population.
+
+2. Can the directional arrows shown below be used to identify genes
+that might be differentially expressed between populations with
+different ancestries?
+
+```{r lkbip}
+biplot_filtered(pp, top_n = 10)
+```
+
+

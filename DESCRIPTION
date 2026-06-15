@@ -20,6 +20,7 @@ Depends:
 Imports:
 Suggests:
     DT,
+    SummarizedExperiment,
     gwascat,
     BiocManager, 
     BiocVersion, 
@@ -32,7 +33,10 @@ Suggests:
     bedbaser,
     rtracklayer,
     S4Vectors,
-    ggmanh
+    ggmanh,
+    ggplot2,
+    GenomicRanges,
+    BEDMatrix
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 BiocType: Book
