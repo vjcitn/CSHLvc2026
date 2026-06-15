@@ -41,7 +41,7 @@ remotes packages installed, and then we can install the ontoProc2
 package with `BiocManager::install("vjcitn/ontoProc2")`.  Once this is
 done, the following will succeed.
 
-```{r lkmon1}
+```{r lkmon1, message=FALSE}
 library(ontoProc2)
 mondo = semsql_connect(ontology="mondo") # download on first attempt
 report(mondo)
@@ -119,7 +119,7 @@ We take for granted the existence of a catalog of genome wide association
 studies (GWAS). We will start to unpack this research concept.
 This table gives a flavor of topics that have been studied in this way.
 
-```{r lkcat}
+```{r lkcat, message=FALSE}
 library(gwascat)
 library(DT)
 library(S4Vectors)
@@ -173,7 +173,7 @@ against the chromsome location of the SNP.
 We have a simple utility function for producing such plots for
 studies in the GWAS catalog.
 
-```{r lkman1}
+```{r lkman1, message=FALSE}
 library(CSHLvc2026)
 data("gwc_110626", package="CSHLvc2026")
 make_manh("GCST90002322", gwc_110626)
@@ -202,7 +202,7 @@ We will use the bedbaser package to interact with
 a large library of "BED" files -- genomic intervals with
 scores measuring experimental effects observed within these intervals.
 
-```{r lkbedbase}
+```{r lkbedbase, message=FALSE}
 library(bedbaser)
 library(GenomicRanges)
 
