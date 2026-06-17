@@ -194,6 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.2.1</span> Exercises</a></li>
   </ul>
 </li>
+  <li><a href="#an-integrative-container-for-expression-and-genotype-data" id="toc-an-integrative-container-for-expression-and-genotype-data" class="nav-link" data-scroll-target="#an-integrative-container-for-expression-and-genotype-data"><span class="header-section-number">2.3</span> An integrative container for expression and genotype data</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -243,8 +244,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vjcitn/CSHLvc2026">CSHLvc2026</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/QuantGen/BEDMatrix">BEDMatrix</a></span><span class="op">)</span></span>
-<span><span class="va">geno</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/CSHLvc2026/man/cache_mage_chr17_plink.html">cache_mage_chr17_plink</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">gt</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/BEDMatrix/man/BEDMatrix.html">BEDMatrix</a></span><span class="op">(</span><span class="va">geno</span><span class="op">$</span><span class="va">bed</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"tQTLExperiment"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"vjcitn/tQTLExperiment"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vjcitn/tQTLExperiment">tQTLExperiment</a></span><span class="op">)</span></span>
+<span><span class="va">geno</span> <span class="op">=</span> <span class="fu">tQTLExperiment</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tQTLExperiment/man/cache_mage_chr17_plink.html">cache_mage_chr17_plink</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">gt</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/BEDMatrix/man/BEDMatrix.html">BEDMatrix</a></span><span class="op">(</span><span class="va">geno</span><span class="op">[</span><span class="st">'bed'</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">gt</span></span>
 <span><span class="co">##  BEDMatrix: 731 x 2075523 [/root/.cache/R/BiocFileCache/CCDG_mage_chr17_plink/CCDG_mage_chr17.bed]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -277,9 +281,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section></section><section id="an-integrative-container-for-expression-and-genotype-data" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="an-integrative-container-for-expression-and-genotype-data">
+<span class="header-section-number">2.3</span> An integrative container for expression and genotype data</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vjcitn/tQTLExperiment">tQTLExperiment</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mageSEfilt</span>, package<span class="op">=</span><span class="st">"CSHLvc2026"</span><span class="op">)</span></span>
+<span><span class="va">plink_paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tQTLExperiment/man/cache_mage_chr17_plink.html">cache_mage_chr17_plink</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">##  [ cache hit   ] CCDG_mage_chr17.fam</span></span>
+<span><span class="co">##  [ cache hit   ] CCDG_mage_chr17.bim</span></span>
+<span><span class="co">##  [ cache hit   ] CCDG_mage_chr17.bed</span></span>
+<span><span class="co">##  [ validate    ] Checking .bed magic bytes ...</span></span>
+<span><span class="co">##  [ validate    ] .bed magic bytes OK.</span></span>
+<span><span class="va">plpre</span> <span class="op">&lt;-</span> <span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/fileutils.html">file_path_sans_ext</a></span><span class="op">(</span><span class="va">plink_paths</span><span class="op">[[</span><span class="st">"bed"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co"># works but not a list!</span></span>
+<span><span class="va">cd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">mageSEfilt</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html">model.matrix</a></span><span class="op">(</span><span class="op">~</span> <span class="va">batch</span> <span class="op">+</span> <span class="va">population</span> <span class="op">+</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">cd</span><span class="op">)</span></span>
+<span><span class="va">mm</span> <span class="op">&lt;-</span> <span class="va">mm</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>   <span class="co"># remove (Intercept)</span></span>
+<span><span class="va">tqe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tQTLExperiment/man/tQTLExperimentFromRSE.html">tQTLExperimentFromRSE</a></span><span class="op">(</span></span>
+<span>    se              <span class="op">=</span> <span class="va">mageSEfilt</span>,</span>
+<span>    plinkPrefix     <span class="op">=</span> <span class="va">plpre</span>,</span>
+<span>    covariateMatrix <span class="op">=</span> <span class="va">mm</span>,</span>
+<span>    genome          <span class="op">=</span> <span class="st">"hg38"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">##  Extracting number of samples and rownames from CCDG_mage_chr17.fam...</span></span>
+<span><span class="co">##  Extracting number of variants and colnames from CCDG_mage_chr17.bim...</span></span>
+<span><span class="va">tqe</span></span>
+<span><span class="co">##  class: tQTLExperiment</span></span>
+<span><span class="co">##  features: 15116  samples: 731 </span></span>
+<span><span class="co">##  assays( 1 ): pseudocounts </span></span>
+<span><span class="co">##  rowRanges: GRanges with 15116 features</span></span>
+<span><span class="co">##  colData( 27 ) covariates: batch, populationASW, populationBEB, populationCDX ... </span></span>
+<span><span class="co">##  geno: 731 samples x 2075523 variants [BEDMatrix - lazy]</span></span>
+<span><span class="co">##  plinkPrefix: /root/.cache/R/BiocFileCache/CCDG_mage_chr17_plink/CCDG_mage_chr17 </span></span>
+<span><span class="co">##  use prepareTQTL() to write inputs and get CLI command</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This structure can be used to perform tests of SNP:expression association, and we will get to the mechanics of that.</p>
+<p>Here is one view of a simple, significant association.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/tQTLExperiment/man/plotGenotypeEffect.html">plotGenotypeEffect</a></span><span class="op">(</span><span class="va">tqe</span>, <span class="st">"17:410391:T:C"</span>, <span class="st">"ENSG00000187624.9"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="xqtl_files/figure-html/lkv1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</section></section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
