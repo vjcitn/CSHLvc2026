@@ -70,8 +70,9 @@ the files from cloud storage and place them for use in a local cache.
 ```{r lkgeno, message=FALSE}
 library(CSHLvc2026)
 library(BEDMatrix)
-geno = cache_mage_chr17_plink()
-gt = BEDMatrix(geno$bed)
+library(tQTLExperiment)
+geno = tQTLExperiment::cache_mage_chr17_plink()
+gt = BEDMatrix(geno['bed'])
 gt
 ```
 
@@ -97,4 +98,29 @@ different ancestries?
 biplot_filtered(pp, top_n = 10)
 ```
 
+## An integrative container for expression and genotype data
 
+```{r lktq1}
+library(tQTLExperiment)
+data(mageSEfilt, package="CSHLvc2026")
+plink_paths <- cache_mage_chr17_plink()
+plpre <- tools::file_path_sans_ext(plink_paths[["bed"]]) # works but not a list!
+cd <- as.data.frame(colData(mageSEfilt))
+mm <- model.matrix(~ batch + population + sex, data = cd)
+mm <- mm[, -1, drop = FALSE]   # remove (Intercept)
+tqe <- tQTLExperimentFromRSE(
+    se              = mageSEfilt,
+    plinkPrefix     = plpre,
+    covariateMatrix = mm,
+    genome          = "hg38"
+)
+tqe
+```
+
+This structure can be used to perform tests of SNP:expression
+association, and we will get to the mechanics of that.
+
+Here is one view of a simple, significant association.
+```{r lkv1}
+plotGenotypeEffect(tqe, "17:410391:T:C", "ENSG00000187624.9")
+```

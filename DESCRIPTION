@@ -5,7 +5,7 @@ Description:
     It covers genome-wide association studies, molecular quantitative trait
     loci, spatial transcriptomics, and emerging computational paradigms for
     biomedical research.
-Version: 0.98.6
+Version: 0.98.8
 Date: `r date()`
 Authors@R:
     person(
@@ -18,6 +18,7 @@ BugReports: https://github.com/vjcitn/CSHLvc2026
 Depends:
     R (>= 4.3)
 Imports:
+    BiocFileCache
 Suggests:
     DT,
     SummarizedExperiment,
@@ -36,7 +37,8 @@ Suggests:
     ggmanh,
     ggplot2,
     GenomicRanges,
-    BEDMatrix
+    BEDMatrix,
+    tQTLExperiment
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 BiocType: Book
@@ -45,5 +47,6 @@ VignetteBuilder: knitr
 BiocBookTemplate: 1.0.6
 SystemRequirements: quarto
 Remotes:
-	vjcitn/ontoProc2
+	vjcitn/ontoProc2,
+	vjcitn/tQTLExperiment
 Config/roxygen2/version: 8.0.0
