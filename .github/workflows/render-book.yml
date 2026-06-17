@@ -44,11 +44,10 @@ jobs:
               'BiocFileCache', 'DT', 'SummarizedExperiment', 'gwascat',
               'BiocStyle', 'glue', 'sessioninfo', 'knitr', 'remotes',
               'rtracklayer', 'S4Vectors', 'ggmanh', 'ggplot2', 'ggbeeswarm',
-              'GenomicRanges', 'BEDMatrix'
+              'GenomicRanges', 'BEDMatrix', 'bedbaser'
             ), ask=FALSE, update=FALSE)
             remotes::install_github('vjcitn/ontoProc2', upgrade='never')
             remotes::install_github('vjcitn/tQTLExperiment', upgrade='never')
-            remotes::install_github('vjcitn/bedbaser', upgrade='never')
           "
 
       - name: Install package
