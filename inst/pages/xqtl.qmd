@@ -70,6 +70,8 @@ the files from cloud storage and place them for use in a local cache.
 ```{r lkgeno, message=FALSE}
 library(CSHLvc2026)
 library(BEDMatrix)
+if (!requireNamespace("tQTLExperiment"))
+  BiocManager::install("vjcitn/tQTLExperiment")
 library(tQTLExperiment)
 geno = tQTLExperiment::cache_mage_chr17_plink()
 gt = BEDMatrix(geno['bed'])
