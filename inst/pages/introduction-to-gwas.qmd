@@ -42,6 +42,7 @@ package with `BiocManager::install("vjcitn/ontoProc2")`.  Once this is
 done, the following will succeed.
 
 ```{r lkmon1, message=FALSE}
+try(BiocManager::install("vjcitn/ontoProc2"))
 library(ontoProc2)
 mondo = semsql_connect(ontology="mondo") # download on first attempt
 report(mondo)
