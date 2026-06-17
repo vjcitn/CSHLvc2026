@@ -36,6 +36,7 @@ Suggests:
     S4Vectors,
     ggmanh,
     ggplot2,
+    ggbeeswarm,
     GenomicRanges,
     BEDMatrix,
     tQTLExperiment
